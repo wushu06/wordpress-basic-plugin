@@ -24,12 +24,7 @@ class BaseController
         $this->plugin_url = plugins_url().'/hook-me-up/';
 
         $this->subpagesOutput = array(
-           /* 'import_users' =>
-                array('Import Users', 'hmu_users_page'),*/
-            'import_prices' =>
-                array('Import Prices & Users', 'hmu_prices_page'),
-            'cron_task' =>
-                array('Cron Task', 'hmu_cron_page'),
+
         );
 
         /*
@@ -64,6 +59,17 @@ class BaseController
 
     }
 
+    function seoUrl($string) {
+        //Lower case everything
+        $string = strtolower($string);
+        //Make alphanumeric (removes all other characters)
+        $string = preg_replace("/[^a-z0-9_\s-]/", "", $string);
+        //Clean up multiple dashes or whitespaces
+        $string = preg_replace("/[\s-]+/", " ", $string);
+        //Convert whitespaces and underscore to dash
+        $string = preg_replace("/[\s_]/", "-", $string);
+        return $string;
+    }
 
 
 }

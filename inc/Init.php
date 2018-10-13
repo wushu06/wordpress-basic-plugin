@@ -4,6 +4,8 @@ namespace Inc;
 
 use Inc\Pages\Admin;
 use Inc\Base\Enqueue;
+use Inc\Filter\HmuShortcode;
+
 
 
 final class Init {
@@ -14,7 +16,7 @@ final class Init {
         return [
             new Admin(),
             new Enqueue(),
-
+            new HmuShortcode()
 
         ];
 

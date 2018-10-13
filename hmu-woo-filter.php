@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Hook Me Up Basic
+Plugin Name: Hook Me Up Woo Filter
 Plugin URI:  http://ukcoding.com
 Description: import/export woocommerce products using rest api
 Version:     1.0.0
