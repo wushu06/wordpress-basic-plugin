@@ -74,7 +74,7 @@ jQuery(document).ready(function ($) {
     };
 
 
-    function initAjax(){
+    function initAjax(archiveTax = '', archiveTerm = ''){
         // Get parameters from the current URL
         let href = getParams(window.location.href);
         //console.log(href);
@@ -96,6 +96,16 @@ jQuery(document).ready(function ($) {
         if(href === ''){
            // console.log('no ajax attr');
         }else{
+            let archive = {archiveTerm}
+
+            if(archiveTerm !=='' && archiveTerm !== '') {
+                href = {
+                    ...href,
+                    [archiveTax]:archiveTerm ,
+
+                }
+            }
+            console.log(href)
 
             ajaxCall( href,true);
             // add checked to relevant inputs
@@ -129,14 +139,17 @@ jQuery(document).ready(function ($) {
       //  e.preventDefault();
         var location = window.location.href;
 
+
         if( $(this).is(':checked') ) {
 
 
             var termTax = $(this).attr('data-term-tax');
             var termId = $(this).attr('data-term');
             var termSlug = $(this).attr('data-term-slug');
+            var archiveTax = $(this).attr('data-archive-tax');
+            var archiveTerm = $(this).attr('data-archive-term');
            // var termHref = $(this).find(":checked").attr('href');
-            console.log(termTax);
+           // console.log(archiveTax + archiveTerm);
 
             if (location.indexOf(termTax) != -1) {
                 //console.log(queryStringUrlReplacement(window.location.href, termTax, termSlug));
@@ -151,10 +164,17 @@ jQuery(document).ready(function ($) {
                     window.history.pushState("", "", location + '?' + termTax + '=' + termSlug);
 
             }
+            var hmuClass = $('.hmu-'+termTax);
 
-            $(this).parentsUntil('hmu-container').find('.hmu_filter_attributes').each(function() {
-                $(this).prop('checked', false);
+
+            $(this).closest('.hmu-term-container').each(function() {
+
+                $(this).siblings().find($('.hmu_filter_attributes')).each(function(){
+                    $(this).prop('checked', false);
+                });
+
             });
+           // $(this).prop('checked', true);
             //   $(this).off("click").attr('data-url', termHref).attr('href', "javascript: void(0);").addClass('active');
             $(this).parent().addClass('parent-active');
             $(this).parent().siblings().removeClass('parent-active');
@@ -174,7 +194,7 @@ jQuery(document).ready(function ($) {
                 //
             }
         }
-        initAjax();
+        initAjax(archiveTax , archiveTerm);
     });
 
 

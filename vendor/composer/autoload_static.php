@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInitf0497215b429e33310dd63a7cbdbb972
 {
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'SlevomatCodingStandard\\' => 23,
+        ),
         'I' => 
         array (
             'Inc\\' => 4,
@@ -14,6 +18,10 @@ class ComposerStaticInitf0497215b429e33310dd63a7cbdbb972
     );
 
     public static $prefixDirsPsr4 = array (
+        'SlevomatCodingStandard\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slevomat/coding-standard/SlevomatCodingStandard',
+        ),
         'Inc\\' => 
         array (
             0 => __DIR__ . '/../..' . '/inc',

@@ -18,13 +18,11 @@ class SettingsApi
     public function register()
     {
         if (!empty($this->admin_pages)) {
-
             add_action('admin_menu', array($this, 'add_menu_pages'));
         }
         if (!empty($this->settings)) {
             add_action('admin_init', array($this, 'registerCustomFields'));
         }
-
     }
 
     /*
@@ -37,7 +35,6 @@ class SettingsApi
         $this->admin_pages = $pages;
 
         return $this;
-
     }
 
     public function addSubPages($pages)
@@ -76,25 +73,25 @@ class SettingsApi
     {
         foreach ($this->admin_pages as $page) {
             add_menu_page(
-
                 $page['page_title'],
                 $page['menu_title'],
                 $page['capability'],
                 $page['menu_slug'],
                 $page['callback'],
                 $page['icon_url'],
-                $page['position']);
+                $page['position']
+            );
         }
 
         foreach ($this->admin_subpages as $page) {
             add_submenu_page(
-
                 $page['parent_slug'],
                 $page['page_title'],
                 $page['menu_title'],
                 $page['capability'],
                 $page['menu_slug'],
-                $page['callback']);
+                $page['callback']
+            );
         }
     }
 
@@ -104,21 +101,21 @@ class SettingsApi
     * 2- add settings section
     * 3- add settings field
     */
-    public function setSettings( $settings)
+    public function setSettings($settings)
     {
         $this->settings = $settings;
 
         return $this;
     }
 
-    public function setSections( $sections)
+    public function setSections($sections)
     {
         $this->sections = $sections;
 
         return $this;
     }
 
-    public function setFields( $fields)
+    public function setFields($fields)
     {
         $this->fields = $fields;
 
@@ -132,7 +129,8 @@ class SettingsApi
             register_setting(
                 $setting["option_group"],
                 $setting["option_name"],
-                (isset($setting["callback"]) ? $setting["callback"] : ''));
+                (isset($setting["callback"]) ? $setting["callback"] : '')
+            );
         }
 
         // add settings section
@@ -141,7 +139,8 @@ class SettingsApi
                 $section["id"],
                 $section["title"],
                 (isset($section["callback"]) ? $section["callback"] : ''),
-                $section["page"]);
+                $section["page"]
+            );
         }
 
         // add settings field
@@ -150,8 +149,10 @@ class SettingsApi
                 $field["id"],
                 $field["title"],
                 (isset($field["callback"]) ? $field["callback"] : ''),
-                $field["page"], $field["section"],
-                (isset($field["args"]) ? $field["args"] : ''));
+                $field["page"],
+                $field["section"],
+                (isset($field["args"]) ? $field["args"] : '')
+            );
         }
     }
 

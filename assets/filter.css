@@ -12,12 +12,14 @@
     margin-right: -15px;
     margin-left: -15px;
     margin-top: 15px;
-    margin-bottom: 15xp;
+    margin-bottom: 15px;
 
 }
+
 .hmu_filter_attributes {
     height: 20px;
-    max-width: 30px;
+    max-width: 50px;
+    width: 100%;
 }
 .hmucol-md-10 {
     -ms-flex: 0 0 83.333333%;

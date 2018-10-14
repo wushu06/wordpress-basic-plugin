@@ -1,15 +1,12 @@
-<?php 
+<?php
 
 namespace Inc\Base;
 
+class Deactivate
+{
 
-
-class Deactivate  {
-
-
-    public static function deactivate () {
-
-
+    public static function deactivate()
+    {
         flush_rewrite_rules();
     }
 }
